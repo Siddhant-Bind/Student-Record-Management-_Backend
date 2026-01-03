@@ -1,5 +1,5 @@
-const express = require('express');
-const supabase = require('../config/supabase');
+import express from 'express';
+import supabase from '../config/supabase.js';
 const router = express.Router();
 
 router.post('/login', async (req, res) => {
@@ -40,4 +40,4 @@ router.post('/logout', async (req, res) => {
   res.json({ message: 'Logged out successfully' });
 });
 
-module.exports = router;
+export default router;

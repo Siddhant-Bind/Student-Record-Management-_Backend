@@ -1,6 +1,6 @@
-const supabase = require('../config/supabase');
+import supabase from '../config/supabase.js';
 
-exports.getMe = async (req, res) => {
+export const getMe = async (req, res) => {
   try {
     const { data, error } = await supabase
       .from('students')
@@ -18,7 +18,7 @@ exports.getMe = async (req, res) => {
   }
 };
 
-exports.updateMe = async (req, res) => {
+export const updateMe = async (req, res) => {
   const { email, hobbies } = req.body;
   try {
     // Basic validation
@@ -42,3 +42,4 @@ exports.updateMe = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+

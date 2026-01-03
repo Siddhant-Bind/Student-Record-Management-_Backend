@@ -1,7 +1,7 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const teacherController = require('../controllers/teacherController');
-const { requireAuth, requireRole } = require('../middleware/auth');
+import * as teacherController from '../controllers/teacherController.js';
+import { requireAuth, requireRole } from '../middleware/auth.js';
 
 // All routes here require Teacher role
 router.use(requireAuth);
@@ -17,4 +17,4 @@ router.get('/students/:id', teacherController.getStudentById);
 router.put('/students/:id', teacherController.updateStudent);
 router.delete('/students/:id', teacherController.deleteStudent);
 
-module.exports = router;
+export default router;

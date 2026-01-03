@@ -1,7 +1,7 @@
-const supabase = require('../config/supabase');
+import supabase from '../config/supabase.js';
 
 // Middleware to check if user is authenticated
-const requireAuth = async (req, res, next) => {
+export const requireAuth = async (req, res, next) => {
   try {
     const authHeader = req.headers.authorization;
     if (!authHeader) {
@@ -30,7 +30,7 @@ const requireAuth = async (req, res, next) => {
 };
 
 // Middleware to check user role
-const requireRole = (role) => {
+export const requireRole = (role) => {
   return async (req, res, next) => {
     try {
       const userId = req.user.id;
@@ -58,4 +58,4 @@ const requireRole = (role) => {
   };
 };
 
-module.exports = { requireAuth, requireRole };
+

@@ -1,8 +1,8 @@
-const supabase = require('../config/supabase');
+import supabase from '../config/supabase.js';
 
 // --- TEACHER MANAGEMENT ---
 
-exports.createTeacher = async (req, res) => {
+export const createTeacher = async (req, res) => {
   const { email, password, fullName, department } = req.body;
   try {
     // 1. Create Auth User
@@ -39,7 +39,7 @@ exports.createTeacher = async (req, res) => {
 
 // --- STUDENT MANAGEMENT ---
 
-exports.createStudent = async (req, res) => {
+export const createStudent = async (req, res) => {
   const { email, password, rollNumber, fullName, hobbies, marks } = req.body;
   
   const missingFields = [];
@@ -96,7 +96,7 @@ exports.createStudent = async (req, res) => {
   }
 };
 
-exports.getAllStudents = async (req, res) => {
+export const getAllStudents = async (req, res) => {
   try {
     const { data, error } = await supabase
       .from('students')
@@ -109,7 +109,7 @@ exports.getAllStudents = async (req, res) => {
   }
 };
 
-exports.getStudentById = async (req, res) => {
+export const getStudentById = async (req, res) => {
   try {
     const { data, error } = await supabase
       .from('students')
@@ -124,7 +124,7 @@ exports.getStudentById = async (req, res) => {
   }
 };
 
-exports.updateStudent = async (req, res) => {
+export const updateStudent = async (req, res) => {
   try {
     const { data, error } = await supabase
       .from('students')
@@ -140,7 +140,7 @@ exports.updateStudent = async (req, res) => {
   }
 };
 
-exports.deleteStudent = async (req, res) => {
+export const deleteStudent = async (req, res) => {
   try {
     
     const { error } = await supabase.auth.admin.deleteUser(req.params.id);

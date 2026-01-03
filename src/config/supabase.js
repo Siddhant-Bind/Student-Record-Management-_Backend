@@ -1,5 +1,5 @@
-const { createClient } = require("@supabase/supabase-js");
-const dotenv = require("dotenv");
+import { createClient } from "@supabase/supabase-js";
+import dotenv from "dotenv";
 
 dotenv.config();
 
@@ -18,4 +18,4 @@ const supabase = createClient(supabaseUrl, supabaseKey, {
   }
 });
 
-module.exports = supabase;
+export default supabase;
